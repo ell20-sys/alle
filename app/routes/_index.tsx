@@ -1,48 +1,30 @@
+import Wrapper from "~/components/Layout/Wrapper";
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "alle" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
-
 export default function Index() {
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Wrapper>
+      <div className="flex flex-col items-center justify-center ">
+        <header className="text-center">
+          <h1 className="text-7xl font-bold text-blue-600 mb-4">
+            Strength begins <br />
+            with <br /> Seeking Help
+          </h1>
+          <p className="text-lg text-gray-700 max-w-lg mx-auto mb-8">
+            Empower Yourself: Reach Out and Rise Strong.
+          </p>
+            <Link to="/role" className="bg-blue-600 text-white font-bold py-6 px-12 rounded-full hover:bg-blue-300 inline-block transition-colors duration-300 ease-in-out">
+              Get Support Now
+            </Link>
+        </header>
+      </div>
+    </Wrapper>
   );
 }
