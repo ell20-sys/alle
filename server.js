@@ -54,16 +54,24 @@
 // );
 
 
-// server.js
+
 import express from 'express';
 import { createRequestHandler } from '@remix-run/express';
-import WebSocket, { WebSocketServer } from 'ws';
+import { WebSocketServer } from 'ws';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { createWebSocketServer } from './websocketServer';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Import the Remix build output
+const remixBuild = require(path.join(__dirname, 'build')); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static assets like client-side JavaScript and CSS (optional)
 app.use(express.static('public'));
 
 // Start the HTTP server and pass it to the WebSocket server
@@ -73,41 +81,16 @@ const server = app.listen(PORT, () => {
 
 // Create a WebSocket Server
 const wss = new WebSocketServer({ server });
-
-// WebSocket server logic
-wss.on('connection', (ws) => {
-  console.log('New WebSocket connection established');
-
-  // Handle messages from clients
-  ws.on('message', (message) => {
-    console.log('Received message:', message);
-
-    // Broadcast the message to all connected clients
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(message); // Send message to all clients
-      }
-    });
-  });
-
-  // Handle WebSocket close event
-  ws.on('close', () => {
-    console.log('WebSocket connection closed');
-  });
-
-  // Send a welcome message when a new client connects
-  ws.send(JSON.stringify({ message: 'Welcome to the WebSocket server!' }));
-});
+createWebSocketServer(wss); // Setup WebSocket logic
 
 // Handle all Remix routes
 app.all(
   '*',
   createRequestHandler({
+    build: remixBuild,  // Pass the Remix build output here
     getLoadContext() {
       // Optionally provide context here
       return {};
     },
-    // Provide the path to the built Remix routes
-    mode: process.env.NODE_ENV,
   })
 );
