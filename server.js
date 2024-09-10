@@ -26,11 +26,10 @@
 // });
 
 
-// server.js (entry point of your app)
 import express from 'express';
 import { createRequestHandler } from '@remix-run/express';
 import WebSocket, { WebSocketServer } from 'ws';
-import { createWebSocketServer } from './websocketServer'; // Your WebSocket logic
+import { createWebSocketServer } from './websocketServer.ts'; 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
