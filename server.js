@@ -60,7 +60,6 @@ import { createRequestHandler } from '@remix-run/express';
 import { WebSocketServer } from 'ws';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createWebSocketServer } from './websocketServer';
 
 
 const __filename = fileURLToPath(import.meta.url);
