@@ -10,10 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Link } from "@remix-run/react";
+import { Link, json, useLoaderData } from "@remix-run/react";
+
+export function loader() {
+  return json({
+    socketServerUrl: process.env.SOCKET_SERVER_URL || "http://localhost:5000",
+  });
+}
 
 // const socket = io("https://fk239twn-5174.uks1.devtunnels.ms:5000");
-const socket = io();
+// const socket = io();
 const SECRET_KEY = "super-secret-key";
 
 const generateUsername = () => {
@@ -26,6 +32,10 @@ const generateUsername = () => {
 };
 
 export default function Index() {
+  const { socketServerUrl } = useLoaderData<typeof loader>();
+  console.log("SOCKET_SERVER_URL", socketServerUrl);
+  const socket = io(socketServerUrl);
+  const SECRET_KEY = "super-secret-key";
   const [role, setRole] = useState("");
   const [waiting, setWaiting] = useState(false);
   const [roomId, setRoomId] = useState("");
