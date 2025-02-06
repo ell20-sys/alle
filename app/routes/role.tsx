@@ -32,9 +32,10 @@ const generateUsername = () => {
 };
 
 export default function Index() {
-  const { socketServerUrl } = useLoaderData<typeof loader>();
-  console.log("SOCKET_SERVER_URL", socketServerUrl);
-  const socket = io(socketServerUrl);
+  // const { socketServerUrl } = useLoaderData<typeof loader>();
+  // console.log("SOCKET_SERVER_URL", socketServerUrl);
+  const socket = io();
+  // const socket = io(socketServerUrl);
   const SECRET_KEY = "super-secret-key";
   const [role, setRole] = useState("");
   const [waiting, setWaiting] = useState(false);
