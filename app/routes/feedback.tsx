@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Wrapper from "~/components/Layout/Wrapper";
 
-export default function FanMailPage() {
+export default function FeedbackPage() {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -15,9 +15,9 @@ export default function FanMailPage() {
   return (
     <Wrapper>
       <div className="container mx-auto p-6">
-        <h1 className="text-4xl font-bold mb-6 font-borel">Fan Mail</h1>
+        {/* <h1 className="text-4xl font-bold mb-6 font-borel">Fan Mail</h1> */}
         <p className="mb-4">
-          I'd love to hear from you all, Please send me your message below:
+          We'd love to hear from you all, Please send me your message below:
         </p>
         {submitted ? (
           <div className="p-4 bg-green-100 border border-green-300 text-green-700 rounded-lg">

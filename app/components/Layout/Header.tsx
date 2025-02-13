@@ -11,8 +11,8 @@ export default function Header() {
     <header className="py-6">
       <div className="container mx-auto flex items-center justify-between font-semibold">
         <Link to="/" className="flex items-center space-x-2">
-          <img src="/alle-log.png" alt="Logo" className="h-10" />
-          <span className="text-2xl font-semibold font-borel">alle</span>
+          <img src="/confide-log.png" alt="Logo" className="h-10" />
+          <span className="text-2xl font-semibold font-borel">confide</span>
         </Link>
         <nav>
           <ul className="flex space-x-6">
@@ -24,19 +24,19 @@ export default function Header() {
                 }`}
               >
                 <span>FAQ</span>
-                <span className="absolute top-2 right-0 text-blue-600 -rotate-180 font-bold">
+                <span className="absolute top-2 right-0 text-blue-600  font-bold">
                   <BiQuestionMark className="w-6 h-6" />
                 </span>
               </Link>
             </li>
             <li>
               <Link
-                to="/fanmail"
+                to="/feedback"
                 className={`hover:bg-blue-100 px-5 py-3 rounded-full transition-colors duration-300 ease-in-out relative ${
-                  isActive("/fanmail") ? "bg-blue-200" : ""
+                  isActive("/feedback") ? "bg-blue-200" : ""
                 }`}
               >
-                <span>Fan mail</span>
+                <span>Send a Feedback</span>
                 <span className="absolute top-3 right-1 text-blue-600 -rotate-45">
                   <MdMail className="w-4 h-4" />
                 </span>

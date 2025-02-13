@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className=" text-gray-600 p-8 flex justify-evenly items-center w-full">
-      <p>&copy; alle by <a href="https://github.com/ell20-sys" className="hover:text-blue-600">elliotawe</a></p>
+      <p>&copy; confide by <a href="https://github.com/ell20-sys" className="hover:text-blue-600">elliotawe</a></p>
       <nav>
           <ul className="flex space-x-6">
             <li>
